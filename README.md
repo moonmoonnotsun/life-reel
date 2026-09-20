@@ -1,10 +1,10 @@
-# lifereel.app
+# life-reel.app
 
 Landing page for **Life Reel: Photo & Video Diary** (iOS).
 
 ## Deploy
 
-Hosted on [GitHub Pages](https://pages.github.com/) with custom domain `lifereel.app`.
+Hosted on [GitHub Pages](https://pages.github.com/) with custom domain `life-reel.app`.
 
 ```bash
 git push origin main
@@ -15,12 +15,12 @@ git push origin main
 1. Create repo `lifereel` on GitHub (public)
 2. Push this folder
 3. **Settings → Pages →** deploy from `main` branch, root `/`
-4. Set custom domain: `lifereel.app`
+4. Set custom domain: `life-reel.app`
 5. Enable **Enforce HTTPS** after DNS check passes
 
 ## Cloudflare DNS
 
-For apex domain `lifereel.app`:
+For apex domain `life-reel.app`:
 
 | Type | Name | Value |
 |------|------|-------|
@@ -34,7 +34,7 @@ Use DNS only (grey cloud). Set SSL mode to **Full** in Cloudflare.
 
 ## Meta ads
 
-Use Traffic → Link clicks → `https://lifereel.app/get/`
+Use Traffic → Link clicks → `https://life-reel.app/get/`
 
 ## Links
 

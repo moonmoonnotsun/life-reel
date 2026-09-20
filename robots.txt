@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://lifereel.app/sitemap.xml
+Sitemap: https://life-reel.app/sitemap.xml
