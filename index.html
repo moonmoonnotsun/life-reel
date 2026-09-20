@@ -289,7 +289,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <div class="logo-circle">L</div>
+                    <img class="footer-logo-img" src="assets/images/life-reel/optimized/logo.png" alt="" width="40" height="40">
                     <span class="logo-text">Life Reel</span>
                 </div>
                 <div class="footer-links">
@@ -319,17 +319,34 @@
                 var summary = details.querySelector('.faq-question');
                 var wrap = details.querySelector('.faq-answer-wrap');
                 if (!summary || !wrap) return;
+
                 summary.addEventListener('click', function (event) {
                     event.preventDefault();
+
                     if (details.open) {
+                        if (details.classList.contains('is-closing')) return;
                         details.classList.add('is-closing');
-                        wrap.addEventListener('transitionend', function onClose(endEvent) {
-                            if (endEvent.propertyName !== 'grid-template-rows') return;
+
+                        var finished = false;
+                        function finishClose() {
+                            if (finished) return;
+                            finished = true;
                             details.classList.remove('is-closing');
                             details.open = false;
                             wrap.removeEventListener('transitionend', onClose);
-                        });
+                        }
+
+                        function onClose(endEvent) {
+                            if (endEvent.target !== wrap) return;
+                            if (endEvent.propertyName !== 'grid-template-rows') return;
+                            finishClose();
+                        }
+
+                        wrap.addEventListener('transitionend', onClose);
+                        // Fallback if transitionend never fires
+                        setTimeout(finishClose, 400);
                     } else {
+                        details.classList.remove('is-closing');
                         details.open = true;
                     }
                 });

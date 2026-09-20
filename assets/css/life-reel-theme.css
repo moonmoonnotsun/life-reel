@@ -1,74 +1,80 @@
 /**
- * Life Reel — light theme overrides
- *
- * Shared main.css / app-page.css assume a DARK page (white text, dark cards).
- * This file flips tokens + component styles for a readable light landing that
- * matches App Store frames (~#1E6CFF royal blue).
+ * Life Reel — light theme (refined)
+ * Shared dark-template CSS is overridden for readable, Soft-premium UI.
  */
 
 :root {
     --primary-color: #1E6CFF;
-    --primary-dark: #0B57E0;
-    --primary-light: #4B8AFF;
+    --primary-dark: #1557E0;
+    --primary-light: #5B8FFF;
     --accent-color: #1E6CFF;
 
-    --text-primary: #0B1220;
-    --text-secondary: #475569;
-    --text-muted: #64748B;
+    /* Soft charcoal — not pure black */
+    --text-primary: #1E293B;
+    --text-secondary: #64748B;
+    --text-muted: #94A3B8;
 
-    --bg-primary: #F4F7FF;
+    --bg-primary: #F7F9FC;
     --bg-secondary: #EEF3FF;
     --bg-card: #ffffff;
-    --border-color: rgba(15, 23, 42, 0.08);
+    --border-color: rgba(30, 41, 59, 0.08);
 
     --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
-    --shadow: 0 8px 24px rgba(15, 70, 160, 0.08);
-    --shadow-lg: 0 16px 40px rgba(15, 70, 160, 0.12);
-    --shadow-xl: 0 24px 56px rgba(15, 70, 160, 0.16);
+    --shadow: 0 10px 28px rgba(15, 70, 160, 0.08);
+    --shadow-lg: 0 18px 40px rgba(15, 70, 160, 0.12);
+    --shadow-xl: 0 28px 56px rgba(15, 70, 160, 0.14);
 
-    --gradient-primary: linear-gradient(135deg, #1E6CFF 0%, #0B57E0 100%);
-    --gradient-card: linear-gradient(135deg, rgba(30, 108, 255, 0.06) 0%, rgba(11, 87, 224, 0.04) 100%);
+    --gradient-primary: linear-gradient(135deg, #1E6CFF 0%, #1557E0 55%, #0D47C9 100%);
+    --gradient-card: linear-gradient(145deg, rgba(30, 108, 255, 0.08) 0%, rgba(21, 87, 224, 0.03) 100%);
 }
 
 body {
     color: var(--text-primary);
     background-color: var(--bg-primary);
     background-image:
-        radial-gradient(at 8% 0%, rgba(30, 108, 255, 0.14) 0px, transparent 48%),
-        radial-gradient(at 92% 8%, rgba(11, 87, 224, 0.10) 0px, transparent 42%),
-        radial-gradient(at 50% 100%, rgba(224, 231, 255, 0.9) 0px, transparent 55%);
+        radial-gradient(at 12% -10%, rgba(30, 108, 255, 0.10) 0px, transparent 46%),
+        radial-gradient(at 88% 0%, rgba(91, 143, 255, 0.08) 0px, transparent 40%),
+        radial-gradient(at 50% 100%, rgba(226, 232, 240, 0.7) 0px, transparent 50%);
     background-attachment: fixed;
 }
 
 .grid-background {
     background-image:
-        linear-gradient(rgba(30, 108, 255, 0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(30, 108, 255, 0.06) 1px, transparent 1px);
-    opacity: 0.55;
+        linear-gradient(rgba(30, 108, 255, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(30, 108, 255, 0.045) 1px, transparent 1px);
+    opacity: 0.7;
 }
 
-/* —— Hero —— */
+/* —— Hero spacing (tighten vs template 120px) —— */
 .app-hero {
     background: transparent;
-    margin-bottom: 40px;
-    padding-top: 80px;
+    margin-bottom: 0 !important;
+    padding: 56px 20px 28px !important;
 }
 
 .app-hero::before {
-    opacity: 0.35;
-    background: radial-gradient(circle, rgba(30, 108, 255, 0.08) 1px, transparent 1px);
+    opacity: 0.25;
+}
+
+.app-hero-container {
+    gap: 48px;
+}
+
+.app-icon-large {
+    margin-bottom: 18px !important;
 }
 
 .app-slogan {
-    color: var(--primary-dark);
+    color: #3B82F6;
     background: none;
-    -webkit-text-fill-color: var(--primary-dark);
+    -webkit-text-fill-color: #3B82F6;
     filter: none;
     text-shadow: none;
-    letter-spacing: 0.12em;
-    font-size: 0.95rem;
-    margin-top: 8px;
-    margin-bottom: 20px;
+    letter-spacing: 0.14em;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 12px !important;
 }
 
 .app-title {
@@ -76,93 +82,89 @@ body {
     -webkit-text-fill-color: var(--text-primary);
     color: var(--text-primary);
     text-shadow: none;
-    font-size: clamp(2.4rem, 5vw, 3.75rem);
+    font-size: clamp(2.25rem, 4.6vw, 3.4rem);
+    margin-bottom: 16px !important;
+    letter-spacing: -0.03em;
+    font-weight: 800;
 }
 
+/* Soft blue highlight + light glow (solid color — clip-text kills glow) */
 .app-title .highlight-brand,
-.highlight-brand {
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+.highlight-brand,
+.section-title .title-accent,
+.title-accent {
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    -webkit-text-fill-color: #1E6CFF;
+    color: #1E6CFF;
     filter: none;
+    text-shadow:
+        0 0 18px rgba(30, 108, 255, 0.35),
+        0 0 36px rgba(30, 108, 255, 0.18);
 }
 
 .app-tagline {
     color: var(--text-secondary);
+    margin-bottom: 28px !important;
+    font-size: 1.0625rem;
+    line-height: 1.7;
 }
 
 .app-tagline .app-store-link,
 .app-store-link {
-    color: var(--primary-dark);
-    border-bottom-color: rgba(30, 108, 255, 0.35);
+    color: #1E6CFF;
+    border-bottom-color: rgba(30, 108, 255, 0.3);
+    font-weight: 600;
 }
 
 .app-store-link:hover {
-    color: var(--primary-color);
-    border-bottom-color: rgba(30, 108, 255, 0.7);
+    color: #1557E0;
+    border-bottom-color: rgba(30, 108, 255, 0.65);
 }
 
+/* Clean icon — no plate, no giant halo (logo asset already rounded) */
 .app-logo {
-    width: 140px;
-    height: 140px;
+    width: 112px !important;
+    height: 112px !important;
     object-fit: contain;
-    border-radius: 50px;
-    padding: 24px;
-    background: linear-gradient(135deg, rgba(30, 108, 255, 0.18) 0%, rgba(75, 138, 255, 0.18) 100%);
-    border: 1px solid rgba(30, 108, 255, 0.35);
-    filter: drop-shadow(0 20px 60px rgba(30, 108, 255, 0.45))
-            drop-shadow(0 0 40px rgba(75, 138, 255, 0.35))
-            drop-shadow(0 0 80px rgba(30, 108, 255, 0.2));
-    box-shadow: 0 8px 32px rgba(15, 70, 160, 0.12),
-                inset 0 1px 0 rgba(255, 255, 255, 0.55),
-                0 0 60px rgba(30, 108, 255, 0.28);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                box-shadow 0.4s ease;
+    border-radius: 28px !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    filter: drop-shadow(0 10px 20px rgba(30, 108, 255, 0.22)) !important;
+    box-shadow: none !important;
+    transition: transform 0.3s ease, filter 0.3s ease;
     will-change: transform;
 }
 
 .app-icon-large:hover .app-logo {
-    transform: scale(1.05);
-    filter: drop-shadow(0 25px 70px rgba(30, 108, 255, 0.55))
-            drop-shadow(0 0 50px rgba(75, 138, 255, 0.4))
-            drop-shadow(0 0 100px rgba(30, 108, 255, 0.25));
-    border-color: rgba(30, 108, 255, 0.55);
-    box-shadow: 0 12px 40px rgba(30, 108, 255, 0.28),
-                0 0 70px rgba(30, 108, 255, 0.22),
-                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    transform: translateY(-2px) scale(1.03);
+    filter: drop-shadow(0 14px 26px rgba(30, 108, 255, 0.3)) !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
 }
 
-@media (hover: none) and (pointer: coarse) {
+@media (hover: none) and (pointer: coarse), (max-width: 768px) {
     .app-logo {
-        filter: drop-shadow(0 12px 28px rgba(30, 108, 255, 0.35)) !important;
-        box-shadow: 0 8px 24px rgba(15, 70, 160, 0.1),
-                    0 0 40px rgba(30, 108, 255, 0.2) !important;
-        transition: none !important;
-        transform: none !important;
-    }
-
-    .app-icon-large:hover .app-logo,
-    .app-icon-large:active .app-logo {
-        transform: none !important;
-    }
-}
-
-@media (max-width: 768px) {
-    .app-logo {
-        /* Keep a soft glow on mobile, skip heavy animated filters */
-        filter: drop-shadow(0 10px 24px rgba(30, 108, 255, 0.3)) !important;
-        box-shadow: 0 6px 20px rgba(15, 70, 160, 0.1),
-                    0 0 36px rgba(30, 108, 255, 0.18) !important;
+        width: 96px !important;
+        height: 96px !important;
+        filter: drop-shadow(0 8px 16px rgba(30, 108, 255, 0.2)) !important;
         animation: none !important;
         transition: none !important;
         transform: none !important;
         will-change: auto !important;
     }
+
+    .app-icon-large:hover .app-logo,
+    .app-icon-large:active .app-logo {
+        transform: none !important;
+        filter: drop-shadow(0 8px 16px rgba(30, 108, 255, 0.2)) !important;
+    }
 }
 
+/* Hero image +15% on wide desktop */
 .hero-frame {
     max-width: 360px;
     margin: 0 auto;
@@ -177,26 +179,43 @@ body {
     display: block;
     width: 100%;
     height: auto;
-    filter: drop-shadow(0 24px 48px rgba(15, 23, 42, 0.18));
+    filter: drop-shadow(0 20px 40px rgba(15, 23, 42, 0.14));
 }
 
-/* —— Sections —— */
+@media (min-width: 1100px) {
+    .hero-frame {
+        max-width: 414px; /* 360 * 1.15 */
+    }
+}
+
+@media (min-width: 1400px) {
+    .hero-frame {
+        max-width: 440px;
+    }
+}
+
+/* —— Sections: tighten big gaps —— */
+.app-section {
+    padding: 56px 20px !important;
+}
+
 .app-section-alt {
-    background: rgba(30, 108, 255, 0.04);
+    background: rgba(30, 108, 255, 0.035);
+}
+
+#features.app-section {
+    padding-top: 24px !important;
+}
+
+.section-header {
+    margin-bottom: 36px !important;
 }
 
 .section-title {
     background: none;
     -webkit-text-fill-color: var(--text-primary);
     color: var(--text-primary);
-}
-
-.section-title .title-accent,
-.title-accent {
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-size: clamp(1.85rem, 3.5vw, 2.75rem) !important;
 }
 
 .section-subtitle,
@@ -205,7 +224,7 @@ body {
 }
 
 .about-copy .app-store-link {
-    color: var(--primary-dark);
+    color: #1E6CFF;
 }
 
 /* —— Feature cards —— */
@@ -218,8 +237,8 @@ body {
 }
 
 .feature-card:hover {
-    border-color: rgba(30, 108, 255, 0.28);
-    box-shadow: var(--shadow-lg);
+    border-color: rgba(30, 108, 255, 0.22);
+    box-shadow: var(--shadow);
 }
 
 .feature-icon-container {
@@ -255,7 +274,7 @@ body {
 }
 
 .screenshot-item:hover {
-    box-shadow: var(--shadow-xl);
+    box-shadow: var(--shadow-lg);
     transform: translateY(-4px);
 }
 
@@ -283,15 +302,16 @@ body {
     }
 }
 
-/* —— FAQ —— */
+/* —— FAQ —— smoother close (no opacity fight) —— */
 .faq-item {
     background: #ffffff;
     border: 1px solid var(--border-color);
     box-shadow: var(--shadow-sm);
+    overflow: hidden;
 }
 
 .faq-item[open] {
-    border-color: rgba(30, 108, 255, 0.35);
+    border-color: rgba(30, 108, 255, 0.28);
     background: #ffffff;
     box-shadow: var(--shadow);
 }
@@ -301,49 +321,74 @@ body {
 }
 
 .faq-icon {
-    color: var(--primary-color);
+    color: #1E6CFF;
 }
 
-.faq-item[open] .faq-icon {
-    color: var(--primary-dark);
+.faq-item[open] .faq-icon,
+.faq-item.is-closing .faq-icon {
+    color: #1557E0;
 }
 
 .faq-answer {
     color: var(--text-secondary);
+    opacity: 1 !important;
+    transition: none !important;
+}
+
+.faq-answer-wrap {
+    transition: grid-template-rows 0.32s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 .faq-answer .app-store-link {
-    color: var(--primary-dark);
-    border-bottom-color: rgba(30, 108, 255, 0.35);
+    color: #1E6CFF;
+    border-bottom-color: rgba(30, 108, 255, 0.3);
 }
 
-/* —— CTA —— */
+/* —— Download CTA block — richer, not flat —— */
+.cta-section {
+    padding: 48px 20px 64px !important;
+}
+
 .cta-card {
-    background: var(--gradient-primary);
-    border: none;
-    box-shadow: 0 24px 60px rgba(30, 108, 255, 0.35);
+    background:
+        radial-gradient(ellipse 80% 60% at 10% 0%, rgba(255, 255, 255, 0.28) 0%, transparent 55%),
+        radial-gradient(ellipse 70% 50% at 90% 100%, rgba(13, 71, 201, 0.55) 0%, transparent 50%),
+        linear-gradient(145deg, #4B8AFF 0%, #1E6CFF 42%, #1557E0 78%, #0D47C9 100%);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    box-shadow:
+        0 28px 64px rgba(21, 87, 224, 0.35),
+        0 0 0 1px rgba(13, 71, 201, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.35);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+    position: relative;
+    overflow: hidden;
 }
 
 .cta-card::before {
-    opacity: 0.25;
-    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.35) 1px, transparent 1px);
+    opacity: 0.35;
+    background-image:
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.35) 0, transparent 42%),
+        radial-gradient(circle, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+    background-size: auto, 28px 28px;
+    animation: none;
 }
 
 .cta-title {
     background: none;
     -webkit-text-fill-color: #ffffff;
     color: #ffffff;
+    text-shadow: 0 2px 16px rgba(11, 40, 120, 0.25);
 }
 
 .cta-description {
-    color: rgba(255, 255, 255, 0.92);
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .cta-description .app-store-link {
     color: #ffffff;
-    border-bottom-color: rgba(255, 255, 255, 0.55);
+    border-bottom-color: rgba(255, 255, 255, 0.5);
+    text-shadow: 0 0 14px rgba(255, 255, 255, 0.25);
 }
 
 .cta-description .app-store-link:hover {
@@ -351,52 +396,46 @@ body {
     border-bottom-color: #ffffff;
 }
 
-/* —— Primary download button (hero) — match audiosoundboard size + glow —— */
+/* —— Hero CTA: solid brand blue (readable as primary action) —— */
 .btn-app-store {
-    background: linear-gradient(135deg, #4B8AFF 0%, #7AA7FF 100%) !important;
-    color: #0B1220 !important;
-    box-shadow: 0 6px 20px rgba(30, 108, 255, 0.28),
-                0 0 24px rgba(30, 108, 255, 0.18) !important;
-    padding: 22px 36px !important;
-    min-height: 64px !important;
-    font-size: 1.125rem !important;
+    background: var(--gradient-primary) !important;
+    color: #ffffff !important;
+    box-shadow:
+        0 10px 24px rgba(30, 108, 255, 0.32),
+        0 2px 0 rgba(255, 255, 255, 0.2) inset !important;
+    padding: 20px 32px !important;
+    min-height: 60px !important;
+    font-size: 1.0625rem !important;
     border-radius: 16px !important;
-    border: none !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
     gap: 0;
 }
 
 .btn-app-store svg {
-    fill: #0B1220;
-    color: #0B1220;
+    fill: #ffffff;
+    color: #ffffff;
 }
 
 .btn-app-store .btn-free,
 .btn-app-store .btn-divider {
-    color: #0B1220;
-    border-color: rgba(11, 18, 32, 0.2);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.35);
 }
 
 .btn-app-store .btn-divider {
-    background: rgba(11, 18, 32, 0.2);
+    background: rgba(255, 255, 255, 0.35);
 }
 
 .btn-app-store:hover {
-    background: linear-gradient(135deg, #5B94FF 0%, #8BB4FF 100%) !important;
-    box-shadow: 0 8px 28px rgba(30, 108, 255, 0.38),
-                0 0 32px rgba(30, 108, 255, 0.25) !important;
+    background: linear-gradient(135deg, #3B7CFF 0%, #1E6CFF 50%, #1557E0 100%) !important;
+    box-shadow:
+        0 14px 32px rgba(30, 108, 255, 0.4),
+        0 2px 0 rgba(255, 255, 255, 0.25) inset !important;
     transform: translateY(-2px);
-    color: #0B1220 !important;
+    color: #ffffff !important;
 }
 
 @media (max-width: 768px) {
-    .btn-app-store {
-        padding: 20px 40px !important;
-        min-height: 60px !important;
-        font-size: 1.0625rem !important;
-    }
-}
-
-@media (max-width: 480px) {
     .btn-app-store {
         padding: 18px 28px !important;
         min-height: 56px !important;
@@ -404,56 +443,82 @@ body {
     }
 }
 
-/* CTA keeps solid brand blue with white text, but same size + glow */
 .cta-card .btn-app-store {
     background: #ffffff !important;
-    color: var(--primary-dark) !important;
-    box-shadow: 0 6px 20px rgba(11, 30, 80, 0.22),
-                0 0 24px rgba(255, 255, 255, 0.25) !important;
-    padding: 22px 36px !important;
-    min-height: 64px !important;
-    font-size: 1.125rem !important;
+    color: #1557E0 !important;
+    border: none !important;
+    box-shadow:
+        0 10px 28px rgba(11, 30, 80, 0.22),
+        0 0 0 1px rgba(255, 255, 255, 0.4) !important;
 }
 
 .cta-card .btn-app-store svg {
-    fill: var(--primary-dark);
-    color: var(--primary-dark);
+    fill: #1557E0;
+    color: #1557E0;
 }
 
 .cta-card .btn-free,
 .cta-card .btn-divider {
-    color: var(--primary-dark);
-    border-color: rgba(11, 87, 224, 0.25);
+    color: #1557E0;
+    border-color: rgba(21, 87, 224, 0.25);
 }
 
 .cta-card .btn-divider {
-    background: rgba(11, 87, 224, 0.25);
+    background: rgba(21, 87, 224, 0.25);
 }
 
 .cta-card .btn-app-store:hover {
-    background: #f8fbff !important;
+    background: #F8FBFF !important;
     transform: translateY(-2px);
-    box-shadow: 0 8px 28px rgba(11, 30, 80, 0.28),
-                0 0 32px rgba(255, 255, 255, 0.35) !important;
+    box-shadow: 0 14px 32px rgba(11, 30, 80, 0.28) !important;
 }
 
 /* —— Footer —— */
 .app-footer {
-    background: #0B1220;
-    border-top: none;
+    background:
+        linear-gradient(180deg, #121A2E 0%, #0B1220 100%);
+    border-top: 1px solid rgba(30, 108, 255, 0.18);
+    padding: 48px 20px 32px !important;
 }
 
-.footer-link,
-.footer-copyright,
-.logo-text {
-    color: rgba(255, 255, 255, 0.72);
+.app-footer .footer-content {
+    align-items: center;
 }
 
-.footer-link:hover {
-    color: #ffffff;
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer-logo-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: block;
+    box-shadow: 0 0 20px rgba(30, 108, 255, 0.25);
 }
 
 .logo-circle {
-    background: var(--gradient-primary) !important;
-    color: #ffffff;
+    display: none !important;
+}
+
+.logo-text {
+    color: #F1F5F9 !important;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.footer-link {
+    color: #94A3B8 !important;
+    transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+    color: #5B8FFF !important;
+}
+
+.footer-copyright {
+    color: #64748B !important;
+    margin-top: 28px;
 }
