@@ -88,7 +88,7 @@ body {
     font-weight: 800;
 }
 
-/* Soft blue highlight + light glow (solid color — clip-text kills glow) */
+/* Soft blue highlight + lighter glow (~15% less than prior) */
 .app-title .highlight-brand,
 .highlight-brand,
 .section-title .title-accent,
@@ -100,8 +100,8 @@ body {
     color: #1E6CFF;
     filter: none;
     text-shadow:
-        0 0 18px rgba(30, 108, 255, 0.35),
-        0 0 36px rgba(30, 108, 255, 0.18);
+        0 0 15px rgba(30, 108, 255, 0.30),
+        0 0 30px rgba(30, 108, 255, 0.15);
 }
 
 .app-tagline {
@@ -336,7 +336,11 @@ body {
 }
 
 .faq-answer-wrap {
-    transition: grid-template-rows 0.32s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    transition: none !important;
+}
+
+.faq-item.is-closing .faq-answer-wrap {
+    transition: none !important;
 }
 
 .faq-answer .app-store-link {
@@ -396,18 +400,16 @@ body {
     border-bottom-color: #ffffff;
 }
 
-/* —— Hero CTA: solid brand blue (readable as primary action) —— */
+/* —— Hero CTA: flat solid primary (no cartoon glow) —— */
 .btn-app-store {
-    background: var(--gradient-primary) !important;
+    background: #1E6CFF !important;
     color: #ffffff !important;
-    box-shadow:
-        0 10px 24px rgba(30, 108, 255, 0.32),
-        0 2px 0 rgba(255, 255, 255, 0.2) inset !important;
-    padding: 20px 32px !important;
-    min-height: 60px !important;
+    box-shadow: 0 4px 14px rgba(30, 108, 255, 0.22) !important;
+    padding: 18px 28px !important;
+    min-height: 56px !important;
     font-size: 1.0625rem !important;
-    border-radius: 16px !important;
-    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    border-radius: 14px !important;
+    border: none !important;
     gap: 0;
 }
 
@@ -427,50 +429,46 @@ body {
 }
 
 .btn-app-store:hover {
-    background: linear-gradient(135deg, #3B7CFF 0%, #1E6CFF 50%, #1557E0 100%) !important;
-    box-shadow:
-        0 14px 32px rgba(30, 108, 255, 0.4),
-        0 2px 0 rgba(255, 255, 255, 0.25) inset !important;
-    transform: translateY(-2px);
+    background: #1557E0 !important;
+    box-shadow: 0 6px 18px rgba(30, 108, 255, 0.28) !important;
+    transform: translateY(-1px);
     color: #ffffff !important;
 }
 
 @media (max-width: 768px) {
     .btn-app-store {
-        padding: 18px 28px !important;
-        min-height: 56px !important;
+        padding: 16px 24px !important;
+        min-height: 52px !important;
         font-size: 1rem !important;
     }
 }
 
 .cta-card .btn-app-store {
     background: #ffffff !important;
-    color: #1557E0 !important;
+    color: #1E6CFF !important;
     border: none !important;
-    box-shadow:
-        0 10px 28px rgba(11, 30, 80, 0.22),
-        0 0 0 1px rgba(255, 255, 255, 0.4) !important;
+    box-shadow: 0 4px 14px rgba(11, 30, 80, 0.18) !important;
 }
 
 .cta-card .btn-app-store svg {
-    fill: #1557E0;
-    color: #1557E0;
+    fill: #1E6CFF;
+    color: #1E6CFF;
 }
 
 .cta-card .btn-free,
 .cta-card .btn-divider {
-    color: #1557E0;
-    border-color: rgba(21, 87, 224, 0.25);
+    color: #1E6CFF;
+    border-color: rgba(30, 108, 255, 0.25);
 }
 
 .cta-card .btn-divider {
-    background: rgba(21, 87, 224, 0.25);
+    background: rgba(30, 108, 255, 0.25);
 }
 
 .cta-card .btn-app-store:hover {
     background: #F8FBFF !important;
-    transform: translateY(-2px);
-    box-shadow: 0 14px 32px rgba(11, 30, 80, 0.28) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(11, 30, 80, 0.22) !important;
 }
 
 /* —— Footer —— */
