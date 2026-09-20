@@ -19,20 +19,20 @@
     <meta property="og:url" content="https://life-reel.app/">
     <meta property="og:title" content="Life Reel - Photo & Video Diary | iPhone">
     <meta property="og:description" content="Turn photos and videos into a life calendar and music-synced highlight reels. Private on your iPhone.">
-    <meta property="og:image" content="https://life-reel.app/assets/images/life-reel/optimized/hero.png">
+    <meta property="og:image" content="https://life-reel.app/assets/images/life-reel/optimized/hero.jpg">
     <meta property="og:site_name" content="Life Reel">
     <meta property="og:locale" content="en_US">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Life Reel - Photo & Video Diary | iPhone">
     <meta name="twitter:description" content="Turn photos and videos into a life calendar and music-synced highlight reels.">
-    <meta name="twitter:image" content="https://life-reel.app/assets/images/life-reel/optimized/hero.png">
+    <meta name="twitter:image" content="https://life-reel.app/assets/images/life-reel/optimized/hero.jpg">
 
     <meta name="apple-itunes-app" content="app-id=6760628421">
 
     <link rel="preconnect" href="https://apps.apple.com" crossorigin>
     <link rel="dns-prefetch" href="https://apps.apple.com">
-    <link rel="preload" href="assets/images/life-reel/optimized/hero.png" as="image">
+    <link rel="preload" href="assets/images/life-reel/optimized/hero.jpg" as="image">
     <link rel="preload" href="assets/css/main.css" as="style">
     <link rel="preload" href="assets/css/app-page.css" as="style">
 
@@ -119,6 +119,20 @@
         .logo-circle {
             background: var(--gradient-primary) !important;
         }
+
+        .hero-frame {
+            max-width: 320px;
+            margin: 0 auto;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 24px 60px rgba(15, 70, 160, 0.28);
+        }
+
+        .hero-frame img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
     </style>
 </head>
 <body>
@@ -147,8 +161,8 @@
                 </div>
             </div>
             <div class="app-hero-visual">
-                <div class="phone-mockup">
-                    <img src="assets/images/life-reel/optimized/hero.png" alt="Life Reel iOS app on iPhone" class="phone-screenshot" width="400" height="800" loading="eager" decoding="async">
+                <div class="hero-frame">
+                    <img src="assets/images/life-reel/optimized/hero.jpg" alt="Life Reel — add moments to your calendar" width="473" height="1024" loading="eager" decoding="async">
                 </div>
             </div>
         </div>
@@ -227,7 +241,38 @@
         </div>
     </section>
 
-    <section class="app-section app-section-alt" id="about-life-reel">
+    <section class="app-section app-section-alt" id="screenshots">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">See it in action</h2>
+                <p class="section-subtitle">Calendar, recaps, trips, and music-synced highlight reels</p>
+            </div>
+        </div>
+        <div class="screenshots-carousel" aria-label="App screenshots">
+            <div class="screenshots-grid">
+                <div class="screenshot-item">
+                    <img src="assets/images/life-reel/optimized/01-add-to-calendar.jpg" alt="Life Reel — add moments to calendar" loading="lazy" width="280" height="600" decoding="async">
+                </div>
+                <div class="screenshot-item">
+                    <img src="assets/images/life-reel/optimized/02-create-movies.jpg" alt="Life Reel — create movies from your memories" loading="lazy" width="280" height="600" decoding="async">
+                </div>
+                <div class="screenshot-item">
+                    <img src="assets/images/life-reel/optimized/03-trips-birthdays.jpg" alt="Life Reel — trips, birthdays, and weekends" loading="lazy" width="280" height="600" decoding="async">
+                </div>
+                <div class="screenshot-item">
+                    <img src="assets/images/life-reel/optimized/04-view-recaps.jpg" alt="Life Reel — view week, month, and year recaps" loading="lazy" width="280" height="600" decoding="async">
+                </div>
+                <div class="screenshot-item">
+                    <img src="assets/images/life-reel/optimized/05-recaps-collage.jpg" alt="Life Reel — memory collage recaps" loading="lazy" width="280" height="600" decoding="async">
+                </div>
+                <div class="screenshot-item">
+                    <img src="assets/images/life-reel/optimized/06-synced-music.jpg" alt="Life Reel — highlight reels synced with music" loading="lazy" width="280" height="600" decoding="async">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="app-section" id="about-life-reel">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">What is <span class="title-accent">Life Reel</span>?</h2>
@@ -319,6 +364,16 @@
     </footer>
     </main>
     <script>
+        (function () {
+            var carousel = document.querySelector('.screenshots-carousel');
+            if (!carousel) return;
+            function resetCarouselScroll() { carousel.scrollLeft = 0; }
+            resetCarouselScroll();
+            window.addEventListener('load', resetCarouselScroll);
+            window.addEventListener('pageshow', function (event) {
+                if (event.persisted) resetCarouselScroll();
+            });
+        })();
         (function () {
             document.querySelectorAll('.faq-item').forEach(function (details) {
                 var summary = details.querySelector('.faq-question');

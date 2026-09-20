@@ -44,8 +44,9 @@ Use Traffic → Link clicks → `https://life-reel.app/get/`
 
 ## Images
 
-Replace placeholders under `assets/images/life-reel/optimized/` when ready:
+Under `assets/images/life-reel/`:
 
-- `logo.png` — app icon
-- `hero.png` — phone / hero screenshot
-- `01-…jpg` etc. — screenshot carousel (optional)
+- `optimized/logo.png` — app icon (still placeholder sizes for favicons)
+- `optimized/hero.jpg` — hero (add moments to calendar)
+- `optimized/01-add-to-calendar.jpg` … `06-synced-music.jpg` — screenshot carousel
+- Favicons: `apple-touch-icon.png`, `favicon-32x32.png`, `favicon-16x16.png`
