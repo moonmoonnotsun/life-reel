@@ -1,0 +1,356 @@
+/**
+ * Life Reel — light theme overrides
+ *
+ * Shared main.css / app-page.css assume a DARK page (white text, dark cards).
+ * This file flips tokens + component styles for a readable light landing that
+ * matches App Store frames (~#1E6CFF royal blue).
+ */
+
+:root {
+    --primary-color: #1E6CFF;
+    --primary-dark: #0B57E0;
+    --primary-light: #4B8AFF;
+    --accent-color: #1E6CFF;
+
+    --text-primary: #0B1220;
+    --text-secondary: #475569;
+    --text-muted: #64748B;
+
+    --bg-primary: #F4F7FF;
+    --bg-secondary: #EEF3FF;
+    --bg-card: #ffffff;
+    --border-color: rgba(15, 23, 42, 0.08);
+
+    --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+    --shadow: 0 8px 24px rgba(15, 70, 160, 0.08);
+    --shadow-lg: 0 16px 40px rgba(15, 70, 160, 0.12);
+    --shadow-xl: 0 24px 56px rgba(15, 70, 160, 0.16);
+
+    --gradient-primary: linear-gradient(135deg, #1E6CFF 0%, #0B57E0 100%);
+    --gradient-card: linear-gradient(135deg, rgba(30, 108, 255, 0.06) 0%, rgba(11, 87, 224, 0.04) 100%);
+}
+
+body {
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    background-image:
+        radial-gradient(at 8% 0%, rgba(30, 108, 255, 0.14) 0px, transparent 48%),
+        radial-gradient(at 92% 8%, rgba(11, 87, 224, 0.10) 0px, transparent 42%),
+        radial-gradient(at 50% 100%, rgba(224, 231, 255, 0.9) 0px, transparent 55%);
+    background-attachment: fixed;
+}
+
+.grid-background {
+    background-image:
+        linear-gradient(rgba(30, 108, 255, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(30, 108, 255, 0.06) 1px, transparent 1px);
+    opacity: 0.55;
+}
+
+/* —— Hero —— */
+.app-hero {
+    background: transparent;
+    margin-bottom: 40px;
+    padding-top: 80px;
+}
+
+.app-hero::before {
+    opacity: 0.35;
+    background: radial-gradient(circle, rgba(30, 108, 255, 0.08) 1px, transparent 1px);
+}
+
+.app-slogan {
+    color: var(--primary-dark);
+    background: none;
+    -webkit-text-fill-color: var(--primary-dark);
+    filter: none;
+    text-shadow: none;
+    letter-spacing: 0.12em;
+    font-size: 0.95rem;
+    margin-top: 8px;
+    margin-bottom: 20px;
+}
+
+.app-title {
+    background: none;
+    -webkit-text-fill-color: var(--text-primary);
+    color: var(--text-primary);
+    text-shadow: none;
+    font-size: clamp(2.4rem, 5vw, 3.75rem);
+}
+
+.app-title .highlight-brand,
+.highlight-brand {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: none;
+}
+
+.app-tagline {
+    color: var(--text-secondary);
+}
+
+.app-tagline .app-store-link,
+.app-store-link {
+    color: var(--primary-dark);
+    border-bottom-color: rgba(30, 108, 255, 0.35);
+}
+
+.app-store-link:hover {
+    color: var(--primary-color);
+    border-bottom-color: rgba(30, 108, 255, 0.7);
+}
+
+.app-logo {
+    filter: none;
+    background: #fff;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
+    padding: 12px;
+    border-radius: 32px;
+}
+
+.app-icon-large:hover .app-logo {
+    filter: none;
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(30, 108, 255, 0.35);
+}
+
+.hero-frame {
+    max-width: 340px;
+    margin: 0 auto;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    background: #fff;
+}
+
+.hero-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* —— Sections —— */
+.app-section-alt {
+    background: rgba(30, 108, 255, 0.04);
+}
+
+.section-title {
+    background: none;
+    -webkit-text-fill-color: var(--text-primary);
+    color: var(--text-primary);
+}
+
+.section-title .title-accent,
+.title-accent {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-subtitle,
+.about-copy {
+    color: var(--text-secondary);
+}
+
+.about-copy .app-store-link {
+    color: var(--primary-dark);
+}
+
+/* —— Feature cards —— */
+.feature-card {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+.feature-card:hover {
+    border-color: rgba(30, 108, 255, 0.28);
+    box-shadow: var(--shadow-lg);
+}
+
+.feature-icon-container {
+    background: rgba(30, 108, 255, 0.1);
+    color: var(--primary-color);
+}
+
+.feature-title {
+    color: var(--text-primary);
+}
+
+.feature-description {
+    color: var(--text-secondary);
+}
+
+/* —— Screenshots —— */
+.screenshots-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    max-width: 1100px;
+}
+
+.screenshot-item {
+    background: transparent;
+    border: none;
+    box-shadow: var(--shadow);
+    border-radius: 20px;
+    overflow: hidden;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    max-width: 320px;
+    width: 100%;
+}
+
+.screenshot-item:hover {
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-4px);
+}
+
+.screenshot-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 20px;
+}
+
+@media (max-width: 900px) {
+    .screenshots-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 560px) {
+    .screenshots-grid {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+
+    .screenshot-item {
+        max-width: 280px;
+    }
+}
+
+/* —— FAQ —— */
+.faq-item {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.faq-item[open] {
+    border-color: rgba(30, 108, 255, 0.35);
+    background: #ffffff;
+    box-shadow: var(--shadow);
+}
+
+.faq-question {
+    color: var(--text-primary);
+}
+
+.faq-icon {
+    color: var(--primary-color);
+}
+
+.faq-item[open] .faq-icon {
+    color: var(--primary-dark);
+}
+
+.faq-answer {
+    color: var(--text-secondary);
+}
+
+.faq-answer .app-store-link {
+    color: var(--primary-dark);
+    border-bottom-color: rgba(30, 108, 255, 0.35);
+}
+
+/* —— CTA —— */
+.cta-card {
+    background: var(--gradient-primary);
+    border: none;
+    box-shadow: 0 24px 60px rgba(30, 108, 255, 0.35);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+.cta-card::before {
+    opacity: 0.25;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.35) 1px, transparent 1px);
+}
+
+.cta-title {
+    background: none;
+    -webkit-text-fill-color: #ffffff;
+    color: #ffffff;
+}
+
+.cta-description {
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.cta-description .app-store-link {
+    color: #ffffff;
+    border-bottom-color: rgba(255, 255, 255, 0.55);
+}
+
+.cta-description .app-store-link:hover {
+    color: #ffffff;
+    border-bottom-color: #ffffff;
+}
+
+.cta-card .btn-app-store {
+    background: #ffffff !important;
+    color: var(--primary-dark) !important;
+    box-shadow: 0 10px 28px rgba(11, 30, 80, 0.2) !important;
+}
+
+.cta-card .btn-app-store svg {
+    fill: var(--primary-dark);
+}
+
+.cta-card .btn-free,
+.cta-card .btn-divider {
+    color: var(--primary-dark);
+    border-color: rgba(11, 87, 224, 0.25);
+}
+
+/* —— Primary download button (hero) —— */
+.btn-app-store {
+    background: var(--gradient-primary) !important;
+    color: #ffffff !important;
+    box-shadow: 0 12px 28px rgba(30, 108, 255, 0.35) !important;
+}
+
+.btn-app-store .btn-free,
+.btn-app-store .btn-divider {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* —— Footer —— */
+.app-footer {
+    background: #0B1220;
+    border-top: none;
+}
+
+.footer-link,
+.footer-copyright,
+.logo-text {
+    color: rgba(255, 255, 255, 0.72);
+}
+
+.footer-link:hover {
+    color: #ffffff;
+}
+
+.logo-circle {
+    background: var(--gradient-primary) !important;
+    color: #ffffff;
+}
