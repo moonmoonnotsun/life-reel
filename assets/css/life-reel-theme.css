@@ -104,34 +104,80 @@ body {
 }
 
 .app-logo {
-    filter: none;
-    background: transparent;
-    border: none;
-    box-shadow: var(--shadow);
-    padding: 0;
-    border-radius: 32px;
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+    border-radius: 50px;
+    padding: 24px;
+    background: linear-gradient(135deg, rgba(30, 108, 255, 0.18) 0%, rgba(75, 138, 255, 0.18) 100%);
+    border: 1px solid rgba(30, 108, 255, 0.35);
+    filter: drop-shadow(0 20px 60px rgba(30, 108, 255, 0.45))
+            drop-shadow(0 0 40px rgba(75, 138, 255, 0.35))
+            drop-shadow(0 0 80px rgba(30, 108, 255, 0.2));
+    box-shadow: 0 8px 32px rgba(15, 70, 160, 0.12),
+                inset 0 1px 0 rgba(255, 255, 255, 0.55),
+                0 0 60px rgba(30, 108, 255, 0.28);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.4s ease;
+    will-change: transform;
 }
 
 .app-icon-large:hover .app-logo {
-    filter: none;
-    box-shadow: var(--shadow-lg);
-    border-color: transparent;
+    transform: scale(1.05);
+    filter: drop-shadow(0 25px 70px rgba(30, 108, 255, 0.55))
+            drop-shadow(0 0 50px rgba(75, 138, 255, 0.4))
+            drop-shadow(0 0 100px rgba(30, 108, 255, 0.25));
+    border-color: rgba(30, 108, 255, 0.55);
+    box-shadow: 0 12px 40px rgba(30, 108, 255, 0.28),
+                0 0 70px rgba(30, 108, 255, 0.22),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .app-logo {
+        filter: drop-shadow(0 12px 28px rgba(30, 108, 255, 0.35)) !important;
+        box-shadow: 0 8px 24px rgba(15, 70, 160, 0.1),
+                    0 0 40px rgba(30, 108, 255, 0.2) !important;
+        transition: none !important;
+        transform: none !important;
+    }
+
+    .app-icon-large:hover .app-logo,
+    .app-icon-large:active .app-logo {
+        transform: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .app-logo {
+        /* Keep a soft glow on mobile, skip heavy animated filters */
+        filter: drop-shadow(0 10px 24px rgba(30, 108, 255, 0.3)) !important;
+        box-shadow: 0 6px 20px rgba(15, 70, 160, 0.1),
+                    0 0 36px rgba(30, 108, 255, 0.18) !important;
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+        will-change: auto !important;
+    }
 }
 
 .hero-frame {
-    max-width: 340px;
+    max-width: 360px;
     margin: 0 auto;
-    border-radius: 28px;
-    overflow: hidden;
-    box-shadow: var(--shadow-xl);
-    border: 1px solid rgba(15, 23, 42, 0.06);
-    background: #fff;
+    border-radius: 0;
+    overflow: visible;
+    box-shadow: none;
+    border: none;
+    background: transparent;
 }
 
 .hero-frame img {
     display: block;
     width: 100%;
     height: auto;
+    filter: drop-shadow(0 24px 48px rgba(15, 23, 42, 0.18));
 }
 
 /* —— Sections —— */
@@ -305,14 +351,73 @@ body {
     border-bottom-color: #ffffff;
 }
 
+/* —— Primary download button (hero) — match audiosoundboard size + glow —— */
+.btn-app-store {
+    background: linear-gradient(135deg, #4B8AFF 0%, #7AA7FF 100%) !important;
+    color: #0B1220 !important;
+    box-shadow: 0 6px 20px rgba(30, 108, 255, 0.28),
+                0 0 24px rgba(30, 108, 255, 0.18) !important;
+    padding: 22px 36px !important;
+    min-height: 64px !important;
+    font-size: 1.125rem !important;
+    border-radius: 16px !important;
+    border: none !important;
+    gap: 0;
+}
+
+.btn-app-store svg {
+    fill: #0B1220;
+    color: #0B1220;
+}
+
+.btn-app-store .btn-free,
+.btn-app-store .btn-divider {
+    color: #0B1220;
+    border-color: rgba(11, 18, 32, 0.2);
+}
+
+.btn-app-store .btn-divider {
+    background: rgba(11, 18, 32, 0.2);
+}
+
+.btn-app-store:hover {
+    background: linear-gradient(135deg, #5B94FF 0%, #8BB4FF 100%) !important;
+    box-shadow: 0 8px 28px rgba(30, 108, 255, 0.38),
+                0 0 32px rgba(30, 108, 255, 0.25) !important;
+    transform: translateY(-2px);
+    color: #0B1220 !important;
+}
+
+@media (max-width: 768px) {
+    .btn-app-store {
+        padding: 20px 40px !important;
+        min-height: 60px !important;
+        font-size: 1.0625rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn-app-store {
+        padding: 18px 28px !important;
+        min-height: 56px !important;
+        font-size: 1rem !important;
+    }
+}
+
+/* CTA keeps solid brand blue with white text, but same size + glow */
 .cta-card .btn-app-store {
     background: #ffffff !important;
     color: var(--primary-dark) !important;
-    box-shadow: 0 10px 28px rgba(11, 30, 80, 0.2) !important;
+    box-shadow: 0 6px 20px rgba(11, 30, 80, 0.22),
+                0 0 24px rgba(255, 255, 255, 0.25) !important;
+    padding: 22px 36px !important;
+    min-height: 64px !important;
+    font-size: 1.125rem !important;
 }
 
 .cta-card .btn-app-store svg {
     fill: var(--primary-dark);
+    color: var(--primary-dark);
 }
 
 .cta-card .btn-free,
@@ -321,17 +426,15 @@ body {
     border-color: rgba(11, 87, 224, 0.25);
 }
 
-/* —— Primary download button (hero) —— */
-.btn-app-store {
-    background: var(--gradient-primary) !important;
-    color: #ffffff !important;
-    box-shadow: 0 12px 28px rgba(30, 108, 255, 0.35) !important;
+.cta-card .btn-divider {
+    background: rgba(11, 87, 224, 0.25);
 }
 
-.btn-app-store .btn-free,
-.btn-app-store .btn-divider {
-    color: #ffffff;
-    border-color: rgba(255, 255, 255, 0.35);
+.cta-card .btn-app-store:hover {
+    background: #f8fbff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(11, 30, 80, 0.28),
+                0 0 32px rgba(255, 255, 255, 0.35) !important;
 }
 
 /* —— Footer —— */
